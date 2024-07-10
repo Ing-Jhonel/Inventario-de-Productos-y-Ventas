@@ -39,7 +39,19 @@ int main(){
 		
 		switch(opcion){
 			case 'a':
-
+				if(n<max){
+					cout << "REGISTRANDO NUEVO PRODUCTO..." << endl << endl;
+					cout << "Nombre: ";
+					if(n>=0) cin.ignore();				
+					getline(cin, producto[n].nombre);
+					cout << "Precio: $";
+					cin >> producto[n].precio;
+					n++;
+					break;
+				} else{
+					cout << "Llego al limite, elimine y agregue otros productos.";
+				}
+				
 				break;
 				
 			case 'b':
