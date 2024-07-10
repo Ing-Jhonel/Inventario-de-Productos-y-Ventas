@@ -13,6 +13,24 @@ struct Venta{
 	float precioTotal;	
 };
 
+void buscarProducto(Producto producto[], int n, string name){
+	
+	int aux=0;
+	for(int i=0; i<n; i++){
+		if(producto[i].nombre==name){
+			cout << "PRODUCTO ENCONTRADO." << endl;
+			cout << "--------------------" << endl << endl;
+			cout << "PRODUCTO " << i+1 << endl << endl;
+			cout << "Nombre: " << producto[i].nombre << endl;
+			cout << "Precio: $" << producto[i].precio << endl;
+			aux=1;
+		} 
+	}
+	if(aux!=1){
+		cout << "PRODUCTO NO ENCONTRADO.";
+	}
+}
+
 int main(){
 	
 	char opcion;
@@ -74,18 +92,8 @@ int main(){
 					cout << "Buscar: ";
 					cin >> buscar;
 					cout << endl;
-					for(int i=0; i<n; i++){
-						if(producto[i].nombre==buscar){
-							cout << "PRODUCTO ENCONTRADO." << endl;
-							cout << "--------------------" << endl << endl;
-							cout << "PRODUCTO " << i+1 << endl << endl;
-							cout << "Nombre: " << producto[i].nombre << endl;
-							cout << "Precio: $" << producto[i].precio << endl;
-						} else {
-							cout << "PRODUCTO NO DISPONIBLE.";
-						}
-					}
-				} else{
+					buscarProducto(producto, n, buscar);
+				} else {
 					cout << "No hay productos disponibles.";
 				}
 				
