@@ -198,11 +198,19 @@ int main() {
                 break;
 
             case 'h':
-
+				if (m > 0) {
+                    float totalVentas = 0;
+                    for (int i = 0; i < m; i++) {
+                        totalVentas += venta[i].precioTotal;
+                    }
+                    cout << "TOTAL DE VENTAS REALIZADAS: $" << totalVentas << endl;
+                } else {
+                    cout << "No hay ventas registradas." << endl;
+                }
                 break;
 
             case 's':
-
+				
                 break;
 
             default:
