@@ -13,16 +13,24 @@ struct Venta{
 	float precioTotal;	
 };
 
+void mostrarProductos(Producto producto[], int n){
+	for(int i=0; i<n; i++){
+		cout << "		PRODUCTO " << i+1 << endl << endl
+			 << "*Nombre: " << producto[i].nombre << endl
+			 << "*Precio: $" << producto[i].precio << endl << endl;
+	}
+}
+
 void buscarProducto(Producto producto[], int n, string name){
 	
 	int aux=0;
 	for(int i=0; i<n; i++){
 		if(producto[i].nombre==name){
-			cout << "PRODUCTO ENCONTRADO." << endl;
-			cout << "--------------------" << endl << endl;
-			cout << "PRODUCTO " << i+1 << endl << endl;
-			cout << "Nombre: " << producto[i].nombre << endl;
-			cout << "Precio: $" << producto[i].precio << endl;
+			cout << "PRODUCTO ENCONTRADO." << endl
+				 << "--------------------" << endl << endl
+				 << "		PRODUCTO " << i+1 << endl << endl
+				 << "Nombre: " << producto[i].nombre << endl
+				 << "Precio: $" << producto[i].precio << endl;
 			aux=1;
 		} 
 	}
@@ -38,6 +46,7 @@ int main(){
 	int n=0;
 	Producto producto[max];
 	string buscar;
+	int modificar;
 	do{
 		cout << "*********************************************" << endl;
 		cout << "MENU PRINCIPAL" << endl << endl;
@@ -76,11 +85,7 @@ int main(){
 				if(n>0){
 					cout << "PRODUCTO REGISTRADOS" << endl;
 					cout << "--------------------" << endl << endl;
-					for(int i=0; i<n; i++){
-						cout << "PRODUCTO " << i+1 << endl << endl;
-						cout << "*Nombre: " << producto[i].nombre << endl;
-						cout << "*Precio: $" << producto[i].precio << endl << endl;
-					}
+					mostrarProductos(producto, n);
 				} else {
 					cout << "No hay productos disponibles.";
 				}
@@ -100,7 +105,20 @@ int main(){
 				break;
 				
 			case 'd':
-				
+				if(n>=0){
+					mostrarProductos(producto, n);
+					cout << "-----------------------------" << endl
+						 << "Indique el # del producto: ";
+					cin >> modificar;
+					cout << "-----------------------------" << endl << endl;
+					cout << "		PRODUCTO " << modificar << ": " << endl << endl;
+					cout << "Nombre: ";
+					cin >> producto[modificar-1].nombre;
+					cout << "Precio: $";
+					cin >> producto[modificar-1].precio;
+				} else {
+					cout << "No hay productos disponibles.";
+				}
 				break;
 				
 			case 'e':
