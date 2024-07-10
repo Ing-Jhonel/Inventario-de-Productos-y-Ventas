@@ -26,7 +26,7 @@ void buscarProducto(Producto producto[], int n, string name){
 	int aux=0;
 	for(int i=0; i<n; i++){
 		if(producto[i].nombre==name){
-			cout << "PRODUCTO ENCONTRADO." << endl
+			cout << "***PRODUCTO ENCONTRADO***" << endl
 				 << "--------------------" << endl << endl
 				 << "		PRODUCTO " << i+1 << endl << endl
 				 << "Nombre: " << producto[i].nombre << endl
@@ -39,6 +39,17 @@ void buscarProducto(Producto producto[], int n, string name){
 	}
 }
 
+void eliminarProducto(Producto producto[], int &n, int indice) {
+    if (indice>=0 && indice<n) {
+        for (int i=indice; i<n-1; i++) {
+            producto[i]=producto[i+1];
+        }
+        n--;
+    } else {
+        cout << "Indice no vแlido" << endl;
+    }
+}
+
 int main(){
 	
 	char opcion;
@@ -46,9 +57,9 @@ int main(){
 	int n=0;
 	Producto producto[max];
 	string buscar;
-	int modificar;
+	int numero;
 	do{
-		cout << "*********************************************" << endl;
+		cout << "บบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ" << endl << endl;
 		cout << "MENU PRINCIPAL" << endl << endl;
 		cout 	<< "A) Registrar un nuevo producto." << endl
 				<< "B) Listar los productos registrados." << endl
@@ -62,7 +73,7 @@ int main(){
 		cout << "Elija una opcion: ";
 		cin >> opcion;
 		cout << endl;
-		cout << "--------------------------------------" << endl << endl;
+		cout << "------------------------------------------------" << endl << endl;
 		
 		switch(opcion){
 			case 'a':
@@ -73,6 +84,8 @@ int main(){
 					getline(cin, producto[n].nombre);
 					cout << "Precio: $";
 					cin >> producto[n].precio;
+					cout << endl
+			 			 << "************** PRODUCTO REGISTRADO **************";
 					n++;
 					break;
 				} else{
@@ -83,11 +96,10 @@ int main(){
 				
 			case 'b':
 				if(n>0){
-					cout << "PRODUCTO REGISTRADOS" << endl;
-					cout << "--------------------" << endl << endl;
+				 	cout << ">>>>>>>>>>>>> PRODUCTOS REGISTRADOS <<<<<<<<<<<<" << endl << endl;
 					mostrarProductos(producto, n);
 				} else {
-					cout << "No hay productos disponibles.";
+					cout << "---> No hay productos disponibles <---";
 				}
 				
 				break;
@@ -109,20 +121,29 @@ int main(){
 					mostrarProductos(producto, n);
 					cout << "-----------------------------" << endl
 						 << "Indique el # del producto: ";
-					cin >> modificar;
+					cin >> numero;
 					cout << "-----------------------------" << endl << endl;
-					cout << "		PRODUCTO " << modificar << ": " << endl << endl;
+					cout << "		PRODUCTO " << numero << ": " << endl << endl;
 					cout << "Nombre: ";
-					cin >> producto[modificar-1].nombre;
+					cin >> producto[numero-1].nombre;
 					cout << "Precio: $";
-					cin >> producto[modificar-1].precio;
+					cin >> producto[numero-1].precio;
+					cout << "***PRODUCTO ACTUALIZADO***";
 				} else {
 					cout << "No hay productos disponibles.";
 				}
 				break;
 				
 			case 'e':
-				
+				if (n > 0) {
+                    mostrarProductos(producto, n);
+                    cout << "Indique el # del producto: ";
+                    cin >> numero;
+                    eliminarProducto(producto, n, numero - 1);
+                    cout << "***PRODUCTO ELIMINADO***";
+                } else {
+                    cout << "No hay contactos para eliminar." << endl;
+                }
 				break;
 				
 			case 'f':
