@@ -184,7 +184,17 @@ int main() {
                 break;
 
             case 'g':
-
+				if (m > 0) {
+                    cout << "<<<<<<<<<<< VENTAS REGISTRADAS <<<<<<<<<<<<" << endl << endl;
+                    for (int i = 0; i < m; i++) {
+                        cout << "ID: " << venta[i].idVenta << endl;
+                        cout << "PRODUCTO: " << venta[i].producto << endl;
+                        cout << "CANTIDAD: " << venta[i].cantidad << endl;
+                        cout << "PRECIO TOTAL: $" << venta[i].precioTotal << endl << endl;
+                    }
+                } else {
+                    cout << "No hay ventas registradas." << endl;
+                }
                 break;
 
             case 'h':
