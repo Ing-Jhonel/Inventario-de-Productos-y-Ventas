@@ -210,7 +210,7 @@ int main() {
                 break;
 
             case 's':
-				
+				cout << "Saliendo del programa..." << endl;
                 break;
 
             default:
