@@ -70,7 +70,25 @@ int main(){
 				break;
 			
 			case 'c':
-
+				if(n>0){
+					cout << "Buscar: ";
+					cin >> buscar;
+					cout << endl;
+					for(int i=0; i<n; i++){
+						if(producto[i].nombre==buscar){
+							cout << "PRODUCTO ENCONTRADO." << endl;
+							cout << "--------------------" << endl << endl;
+							cout << "PRODUCTO " << i+1 << endl << endl;
+							cout << "Nombre: " << producto[i].nombre << endl;
+							cout << "Precio: $" << producto[i].precio << endl;
+						} else {
+							cout << "PRODUCTO NO DISPONIBLE.";
+						}
+					}
+				} else{
+					cout << "No hay productos disponibles.";
+				}
+				
 				break;
 				
 			case 'd':
