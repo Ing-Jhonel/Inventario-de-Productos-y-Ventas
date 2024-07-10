@@ -55,7 +55,18 @@ int main(){
 				break;
 				
 			case 'b':
-
+				if(n>0){
+					cout << "PRODUCTO REGISTRADOS" << endl;
+					cout << "--------------------" << endl << endl;
+					for(int i=0; i<n; i++){
+						cout << "PRODUCTO " << i+1 << endl << endl;
+						cout << "*Nombre: " << producto[i].nombre << endl;
+						cout << "*Precio: $" << producto[i].precio << endl << endl;
+					}
+				} else {
+					cout << "No hay productos disponibles.";
+				}
+				
 				break;
 			
 			case 'c':
